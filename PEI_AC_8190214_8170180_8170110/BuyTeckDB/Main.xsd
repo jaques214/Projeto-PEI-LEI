@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.buyteck.pt/Main" targetNamespace="http://www.buyteck.pt/Main"
+    xmlns:c="http://www.buyteck.pt/CommonTypes" xmlns:p="http://www.buyteck.pt/ProductTypes"
+    xmlns:s="http://www.buyteck.pt/SellerTypes" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.buyteck.pt/CommonTypes" schemaLocation="CommonTypes.xsd"/>
+    <xs:import namespace="http://www.buyteck.pt/ProductTypes" schemaLocation="ProductTypes.xsd"/>
+    <xs:import namespace="http://www.buyteck.pt/SellerTypes" schemaLocation="SellerTypes.xsd"/>
+    
+    <xs:annotation>
+        <xs:documentation>Padrão para ficheiro xml principal</xs:documentation>
+    </xs:annotation>
+    
+    <xs:element name="company">
+        <xs:annotation>
+            <xs:documentation>Padrão da empresa</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="creationDate" type="c:date"/>
+                <xs:element name="seller_list" type="s:sellerType"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

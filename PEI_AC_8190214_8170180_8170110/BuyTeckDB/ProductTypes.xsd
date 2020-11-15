@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.buyteck.pt/ProductTypes"
+    targetNamespace="http://www.buyteck.pt/ProductTypes"
+    xmlns:n="http://www.buyteck.pt/NegotiationTypes" xmlns:c="http://www.buyteck.pt/CommonTypes"
+    elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.buyteck.pt/CommonTypes" schemaLocation="CommonTypes.xsd"/>
+    <xs:import namespace="http://www.buyteck.pt/NegotiationTypes"
+        schemaLocation="NegotiationTypes.xsd"/>
+    
+    <xs:annotation>
+        <xs:documentation>Vocabulário xsd para a informação relativa ao produto</xs:documentation>
+    </xs:annotation>
+    
+    <xs:complexType name="expediction">
+        <xs:annotation>
+            <xs:documentation>Padrão da expedição do produto</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="country" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productDetails">
+        <xs:annotation>
+            <xs:documentation>Detalhes de Produtos</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="brand" type="xs:string"/>
+            <xs:element name="model" type="xs:string" maxOccurs="1" minOccurs="0"/>
+            <xs:element name="characteristics" type="c:characteristics" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="rating" type="c:ratingType"/>
+            <xs:element name="expediction" type="expediction" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="negotiation" type="n:business" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="productType">
+        <xs:annotation>
+            <xs:documentation>Padrão do produto</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="product" type="productDetails" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.buyteck.pt/NegotiationTypes" targetNamespace="http://www.buyteck.pt/NegotiationTypes"
+    xmlns:c="http://www.buyteck.pt/CommonTypes" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.buyteck.pt/CommonTypes" schemaLocation="CommonTypes.xsd"/>
+    
+    <xs:annotation>
+        <xs:documentation>Vocabulário xsd para a informação relativa ao negócio</xs:documentation>
+    </xs:annotation>
+    
+    <xs:simpleType name="paymentMethods">
+        <xs:annotation>
+            <xs:documentation>Padrão para os métodos de pagamento</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Dinheiro"/>
+            <xs:enumeration value="Transferência"/>
+            <xs:enumeration value="MBWay"/>
+            <xs:enumeration value="PayPal"/>
+            <xs:enumeration value="Cheque"/>
+            <xs:enumeration value="Cartão de Crédito"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="businessType">
+        <xs:annotation>
+            <xs:documentation>Restrição dos tipos de negócios (Venda direta ou leilão)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="auction"/>
+            <xs:enumeration value="directSell"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="auction_priceType">
+        <xs:sequence>
+            <xs:element name="basePrice" type="xs:float"/>
+            <xs:element name="biddingBase" type="xs:float"/>
+            <xs:element name="productPrice" type="xs:float"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="direct_priceType">
+        <xs:sequence>
+            <xs:element name="fixedPrice" type="xs:float"/>
+            <xs:element name="quantity" type="xs:unsignedInt"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="business">
+        <xs:annotation>
+            <xs:documentation>Padrão da negócios</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="businessCode" type="xs:unsignedInt"/>
+            <xs:element name="auction_price" type="auction_priceType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="direct_price" type="direct_priceType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="startDate" type="c:date"/>
+            <xs:element name="finishDate" type="c:date"/>
+            <xs:element name="paymentMethods" type="paymentMethods"/>
+        </xs:sequence>
+        <xs:attribute name="tipo" type="businessType"/>
+    </xs:complexType>
+     
+</xs:schema>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:company xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:m="http://www.buyteck.pt/Main" xsi:schemaLocation="http://www.buyteck.pt/Main Main.xsd" 
+    xmlns:s="http://www.buyteck.pt/SellerTypes" xmlns:p="http://www.buyteck.pt/ProductTypes" xmlns:n="http://www.buyteck.pt/NegotiationTypes" xmlns:c="http://www.buyteck.pt/CommonTypes">
+    <m:name>BuyTeck</m:name>
+    <m:creationDate>05-11-2020</m:creationDate>
+    <m:seller_list>
+        <s:seller>
+            <s:sellerCode>1</s:sellerCode>
+            <s:name>Pancrácio</s:name>
+            <s:nif>123456789</s:nif>
+            <s:gender>male</s:gender>
+            <s:social_media>
+                <s:facebook>facebook.com/buyteck</s:facebook>
+                <s:instagram>instagram.com/buyteck</s:instagram>
+            </s:social_media>
+            <s:address>
+                <c:address>Rua</c:address>
+                <c:number>2</c:number>
+                <c:postal-code>4567-456</c:postal-code>
+                <c:city>Porto</c:city>
+                <c:country>Portugal</c:country>
+            </s:address>
+            <s:telephone>123456789</s:telephone>
+            <s:email>aa@aa.com</s:email>
+            <s:rating>5</s:rating>
+            <s:product_list>
+                <p:product>
+                    <p:name>Nome</p:name>
+                    <p:description>Descrição</p:description>
+                    <p:brand>Marca</p:brand>
+                    <p:characteristics>
+                        <c:characteristic>Característica 1</c:characteristic>
+                        <c:characteristic>Característica 2</c:characteristic>
+                    </p:characteristics>
+                    <p:rating>3</p:rating>
+                    <p:negotiation tipo="auction">
+                        <n:businessCode>1</n:businessCode>
+                        <n:auction_price>
+                            <n:basePrice>100.99</n:basePrice>
+                            <n:biddingBase>120.4</n:biddingBase>
+                            <n:productPrice>80.5</n:productPrice>
+                        </n:auction_price>
+                        <n:startDate>05-11-2020</n:startDate>
+                        <n:finishDate>10-11-2020</n:finishDate>
+                        <n:paymentMethods>Dinheiro</n:paymentMethods>
+                    </p:negotiation>
+                </p:product>
+                <p:product>
+                    <p:name>Nome</p:name>
+                    <p:description>Descrição</p:description>
+                    <p:brand>Marca</p:brand>
+                    <p:characteristics>
+                        <c:characteristic>Característica 1</c:characteristic>
+                        <c:characteristic>Característica 2</c:characteristic>
+                    </p:characteristics>
+                    <p:rating>3</p:rating>
+                    <p:negotiation tipo="directSell">
+                        <n:businessCode>1</n:businessCode>
+                        <n:direct_price>
+                            <n:fixedPrice>50.68</n:fixedPrice>
+                            <n:quantity>3</n:quantity>
+                        </n:direct_price>
+                        <n:startDate>05-11-2020</n:startDate>
+                        <n:finishDate>10-11-2020</n:finishDate>
+                        <n:paymentMethods>Dinheiro</n:paymentMethods>
+                    </p:negotiation>
+                </p:product>
+            </s:product_list>
+        </s:seller>
+    </m:seller_list>
+</m:company>

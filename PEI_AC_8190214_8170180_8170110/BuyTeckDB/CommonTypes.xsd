@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.buyteck.pt/CommonTypes"
+    targetNamespace="http://www.buyteck.pt/CommonTypes" elementFormDefault="qualified">
+    
+    <xs:annotation>
+        <xs:documentation>Vocabulário xsd para tipos comuns</xs:documentation>
+    </xs:annotation>
+    
+    <xs:simpleType name="ratingType">
+        <xs:annotation>
+            <xs:documentation>Padrão para a avaliação do vendedor/produto</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-5]"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="genderType">
+        <xs:annotation>
+            <xs:documentation>Padrão para o género do vendedor</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="male|female"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="nineNumbers">
+        <xs:annotation>
+            <xs:documentation>Padrão para os números com 9 dígitos (NIF e telefone)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]){9}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="postalCode">
+        <xs:annotation>
+            <xs:documentation>Padrão para o código postal</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4}\-\d{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="address">
+        <xs:annotation>
+            <xs:documentation>Padrão para a morada</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="address" type="xs:string"/>
+            <xs:element name="number" type="xs:integer"/>
+            <xs:element name="postal-code" type="postalCode"/>
+            <xs:element name="city" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="email">
+        <xs:annotation>
+            <xs:documentation>Padrão para o email</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[a-z]+@[a-z]+.+[a-z]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="characteristics">
+        <xs:annotation>
+            <xs:documentation>Padrão para as características-chave do produto</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="characteristic" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="date">
+        <xs:annotation>
+            <xs:documentation>Padrão para a data</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{2}\-\d{2}\-\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

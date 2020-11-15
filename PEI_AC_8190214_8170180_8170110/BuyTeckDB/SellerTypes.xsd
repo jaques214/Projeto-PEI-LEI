@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.buyteck.pt/SellerTypes" 
+    targetNamespace="http://www.buyteck.pt/SellerTypes" xmlns:p="http://www.buyteck.pt/ProductTypes"
+    xmlns:c="http://www.buyteck.pt/CommonTypes" elementFormDefault="qualified">
+    
+    <xs:import namespace="http://www.buyteck.pt/ProductTypes" schemaLocation="ProductTypes.xsd"/>
+    <xs:import namespace="http://www.buyteck.pt/CommonTypes" schemaLocation="CommonTypes.xsd"/>
+    
+    <xs:annotation>
+        <xs:documentation>Vocabulário xsd para a informação relativa ao vendedor</xs:documentation>
+    </xs:annotation>
+    
+    <xs:complexType name="social_media_list">
+        <xs:annotation>
+            <xs:documentation>Padrão das redes sociais</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="facebook" type="xs:string"/>
+            <xs:element name="instagram" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="sellerDetails">
+        <xs:annotation>
+            <xs:documentation>Detalhes de vendedores</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="sellerCode" type="xs:integer"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="nif" type="c:nineNumbers"/>
+            <xs:element name="gender" type="c:genderType"/>
+            <xs:element name="social_media" type="social_media_list"/>
+            <xs:element name="address" type="c:address"/>
+            <xs:element name="telephone" type="c:nineNumbers"/>
+            <xs:element name="email" type="c:email"/>
+            <xs:element name="rating" type="c:ratingType"/>
+            <xs:element name="product_list" type="p:productType"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="sellerType">
+        <xs:annotation>
+            <xs:documentation>Padrão do vendedor</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="seller" type="sellerDetails"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

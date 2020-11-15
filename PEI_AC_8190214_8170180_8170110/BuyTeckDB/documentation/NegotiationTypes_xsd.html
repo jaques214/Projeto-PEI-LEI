@@ -1,0 +1,2117 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for NegotiationTypes.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript"><!--
+        var propertiesBoxes= new Array('properties_NegotiationTypes.xsd', 
+				'properties_business_businessCode', 
+				'properties_business_auction_price', 
+				'properties_auction_priceType_basePrice', 
+				'properties_auction_priceType_biddingBase', 
+				'properties_auction_priceType_productPrice', 
+				'properties_business_direct_price', 
+				'properties_direct_priceType_fixedPrice', 
+				'properties_direct_priceType_quantity', 
+				'properties_business_startDate', 
+				'properties_business_finishDate', 
+				'properties_business_paymentMethods', 
+				'properties_business_tipo');
+var facetsBoxes= new Array('facets_business_startDate', 
+				'facets_business_finishDate', 
+				'facets_business_paymentMethods', 
+				'facets_paymentMethods', 
+				'facets_businessType', 
+				'facets_business_tipo');
+var usedByBoxes= new Array('usedBy_business', 
+				'usedBy_auction_priceType', 
+				'usedBy_direct_priceType', 
+				'usedBy_paymentMethods', 
+				'usedBy_businessType', 
+				'usedBy_business_tipo');
+var sourceBoxes= new Array('source_business_businessCode', 
+				'source_business_auction_price', 
+				'source_auction_priceType_basePrice', 
+				'source_auction_priceType_biddingBase', 
+				'source_auction_priceType_productPrice', 
+				'source_business_direct_price', 
+				'source_direct_priceType_fixedPrice', 
+				'source_direct_priceType_quantity', 
+				'source_business_startDate', 
+				'source_business_finishDate', 
+				'source_business_paymentMethods', 
+				'source_business', 
+				'source_auction_priceType', 
+				'source_direct_priceType', 
+				'source_paymentMethods', 
+				'source_businessType', 
+				'source_business_tipo');
+var instanceBoxes= new Array('instance_business_auction_price', 
+				'instance_business_direct_price');
+var diagramBoxes= new Array('diagram_business_businessCode', 
+				'diagram_business_auction_price', 
+				'diagram_auction_priceType_basePrice', 
+				'diagram_auction_priceType_biddingBase', 
+				'diagram_auction_priceType_productPrice', 
+				'diagram_business_direct_price', 
+				'diagram_direct_priceType_fixedPrice', 
+				'diagram_direct_priceType_quantity', 
+				'diagram_business_startDate', 
+				'diagram_business_finishDate', 
+				'diagram_business_paymentMethods', 
+				'diagram_business', 
+				'diagram_auction_priceType', 
+				'diagram_direct_priceType', 
+				'diagram_paymentMethods', 
+				'diagram_businessType');
+var annotationBoxes= new Array('annotations_NegotiationTypes.xsd', 
+				'annotations_business', 
+				'annotations_paymentMethods', 
+				'annotations_businessType');
+var attributesBoxes= new Array('attributes_business');
+var modelBoxes= new Array('model_business_auction_price', 
+				'model_business_direct_price', 
+				'model_business', 
+				'model_auction_priceType', 
+				'model_direct_priceType');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, attributesBoxes);" class="control" /></span><span class="globalControlName">Attributes </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, facetsBoxes);" class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="NegotiationTypes.xsd"></a><div class="componentTitle">Imported schema <span class="qname">NegotiationTypes.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_NegotiationTypes.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_NegotiationTypes.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_NegotiationTypes.xsd" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Vocabulário xsd para a informação relativa ao negócio</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_NegotiationTypes.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_NegotiationTypes.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_NegotiationTypes.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_businessCode"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / businessCode</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business_businessCode" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business_businessCode');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business_businessCode" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_businessCode.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:unsignedInt</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_businessCode" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_businessCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_businessCode" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_businessCode" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_businessCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_businessCode" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"businessCode"</span><span class="tAN"> type=</span><span class="tAV">"xs:unsignedInt"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_auction_price"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / auction_price</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business_auction_price" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business_auction_price');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business_auction_price" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_auction_price.jpeg" usemap="#NegotiationTypes_xsd_Element_auction_price" /><map name="NegotiationTypes_xsd_Element_auction_price" id="NegotiationTypes_xsd_Element_auction_price"><area alt="NegotiationTypes_xsd.tmp#auction_priceType_basePrice" href="NegotiationTypes_xsd.html#auction_priceType_basePrice" coords="209,40,288,65" /><area alt="NegotiationTypes_xsd.tmp#auction_priceType_biddingBase" href="NegotiationTypes_xsd.html#auction_priceType_biddingBase" coords="209,75,299,100" /><area alt="NegotiationTypes_xsd.tmp#auction_priceType_productPrice" href="NegotiationTypes_xsd.html#auction_priceType_productPrice" coords="209,110,301,135" /><area alt="NegotiationTypes_xsd.tmp#auction_priceType" href="NegotiationTypes_xsd.html#auction_priceType" coords="127,3,267,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#auction_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">auction_priceType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_auction_price" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_auction_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_auction_price" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_business_auction_price" type="image" src="img/btM.gif" value="-" onclick="switchState('model_business_auction_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_business_auction_price" style="display:block"><b><a href="NegotiationTypes_xsd.html#auction_priceType_basePrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">basePrice</a></b> , <b><a href="NegotiationTypes_xsd.html#auction_priceType_biddingBase" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">biddingBase</a></b> , <b><a href="NegotiationTypes_xsd.html#auction_priceType_productPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">productPrice</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#auction_priceType_basePrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">basePrice</a></b>, <b><a href="NegotiationTypes_xsd.html#auction_priceType_biddingBase" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">biddingBase</a></b>, <b><a href="NegotiationTypes_xsd.html#auction_priceType_productPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">productPrice</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_business_auction_price" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_business_auction_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_business_auction_price" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;auction_price</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.buyteck.pt/NegotiationTypes"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;basePrice</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/basePrice&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;biddingBase</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/biddingBase&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;productPrice</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/productPrice&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/auction_price&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_auction_price" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_auction_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_auction_price" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"auction_price"</span><span class="tAN"> type=</span><span class="tAV">"auction_priceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="auction_priceType_basePrice"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#auction_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">auction_priceType</a></b> / basePrice</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_auction_priceType_basePrice" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_auction_priceType_basePrice');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_auction_priceType_basePrice" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_basePrice.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:float</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_auction_priceType_basePrice" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_auction_priceType_basePrice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_auction_priceType_basePrice" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_auction_priceType_basePrice" type="image" src="img/btM.gif" value="-" onclick="switchState('source_auction_priceType_basePrice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_auction_priceType_basePrice" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"basePrice"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="auction_priceType_biddingBase"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#auction_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">auction_priceType</a></b> / biddingBase</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_auction_priceType_biddingBase" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_auction_priceType_biddingBase');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_auction_priceType_biddingBase" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_biddingBase.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:float</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_auction_priceType_biddingBase" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_auction_priceType_biddingBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_auction_priceType_biddingBase" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_auction_priceType_biddingBase" type="image" src="img/btM.gif" value="-" onclick="switchState('source_auction_priceType_biddingBase');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_auction_priceType_biddingBase" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"biddingBase"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="auction_priceType_productPrice"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#auction_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">auction_priceType</a></b> / productPrice</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_auction_priceType_productPrice" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_auction_priceType_productPrice');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_auction_priceType_productPrice" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_productPrice.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:float</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_auction_priceType_productPrice" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_auction_priceType_productPrice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_auction_priceType_productPrice" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_auction_priceType_productPrice" type="image" src="img/btM.gif" value="-" onclick="switchState('source_auction_priceType_productPrice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_auction_priceType_productPrice" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"productPrice"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_direct_price"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / direct_price</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business_direct_price" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business_direct_price');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business_direct_price" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_direct_price.jpeg" usemap="#NegotiationTypes_xsd_Element_direct_price" /><map name="NegotiationTypes_xsd_Element_direct_price" id="NegotiationTypes_xsd_Element_direct_price"><area alt="NegotiationTypes_xsd.tmp#direct_priceType_fixedPrice" href="NegotiationTypes_xsd.html#direct_priceType_fixedPrice" coords="201,40,280,65" /><area alt="NegotiationTypes_xsd.tmp#direct_priceType_quantity" href="NegotiationTypes_xsd.html#direct_priceType_quantity" coords="201,75,270,100" /><area alt="NegotiationTypes_xsd.tmp#direct_priceType" href="NegotiationTypes_xsd.html#direct_priceType" coords="119,3,251,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#direct_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">direct_priceType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_direct_price" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_direct_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_direct_price" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">minOccurs</td>
+                                    <td><b>0</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">maxOccurs</td>
+                                    <td><b>1</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_business_direct_price" type="image" src="img/btM.gif" value="-" onclick="switchState('model_business_direct_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_business_direct_price" style="display:block"><b><a href="NegotiationTypes_xsd.html#direct_priceType_fixedPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">fixedPrice</a></b> , <b><a href="NegotiationTypes_xsd.html#direct_priceType_quantity" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">quantity</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#direct_priceType_fixedPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">fixedPrice</a></b>, <b><a href="NegotiationTypes_xsd.html#direct_priceType_quantity" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">quantity</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_business_direct_price" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_business_direct_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_business_direct_price" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;direct_price</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.buyteck.pt/NegotiationTypes"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;fixedPrice</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/fixedPrice&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;quantity</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/quantity&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/direct_price&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_direct_price" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_direct_price');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_direct_price" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"direct_price"</span><span class="tAN"> type=</span><span class="tAV">"direct_priceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="direct_priceType_fixedPrice"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#direct_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">direct_priceType</a></b> / fixedPrice</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_direct_priceType_fixedPrice" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_direct_priceType_fixedPrice');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_direct_priceType_fixedPrice" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_fixedPrice.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:float</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_direct_priceType_fixedPrice" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_direct_priceType_fixedPrice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_direct_priceType_fixedPrice" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_direct_priceType_fixedPrice" type="image" src="img/btM.gif" value="-" onclick="switchState('source_direct_priceType_fixedPrice');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_direct_priceType_fixedPrice" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"fixedPrice"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="direct_priceType_quantity"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#direct_priceType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">direct_priceType</a></b> / quantity</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_direct_priceType_quantity" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_direct_priceType_quantity');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_direct_priceType_quantity" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_quantity.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:unsignedInt</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_direct_priceType_quantity" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_direct_priceType_quantity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_direct_priceType_quantity" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_direct_priceType_quantity" type="image" src="img/btM.gif" value="-" onclick="switchState('source_direct_priceType_quantity');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_direct_priceType_quantity" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"quantity"</span><span class="tAN"> type=</span><span class="tAV">"xs:unsignedInt"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_startDate"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / startDate</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business_startDate" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business_startDate');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business_startDate" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_startDate.jpeg" usemap="#NegotiationTypes_xsd_Element_startDate" /><map name="NegotiationTypes_xsd_Element_startDate" id="NegotiationTypes_xsd_Element_startDate"><area alt="CommonTypes_xsd.tmp#date" href="CommonTypes_xsd.html#date" coords="103,0,188,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#date" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">date</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_startDate" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_startDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_startDate" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_business_startDate" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_business_startDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_business_startDate" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>\d{2}\-\d{2}\-\d{4}</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_startDate" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_startDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_startDate" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"startDate"</span><span class="tAN"> type=</span><span class="tAV">"c:date"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_finishDate"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / finishDate</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business_finishDate" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business_finishDate');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business_finishDate" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_finishDate.jpeg" usemap="#NegotiationTypes_xsd_Element_finishDate" /><map name="NegotiationTypes_xsd_Element_finishDate" id="NegotiationTypes_xsd_Element_finishDate"><area alt="CommonTypes_xsd.tmp#date" href="CommonTypes_xsd.html#date" coords="107,0,192,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#date" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">date</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_finishDate" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_finishDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_finishDate" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_business_finishDate" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_business_finishDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_business_finishDate" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>\d{2}\-\d{2}\-\d{4}</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_finishDate" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_finishDate');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_finishDate" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"finishDate"</span><span class="tAN"> type=</span><span class="tAV">"c:date"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_paymentMethods"></a><div class="componentTitle">Element <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / paymentMethods</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business_paymentMethods" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Element_paymentMethods.jpeg" usemap="#NegotiationTypes_xsd_Element_paymentMethods" /><map name="NegotiationTypes_xsd_Element_paymentMethods" id="NegotiationTypes_xsd_Element_paymentMethods"><area alt="NegotiationTypes_xsd.tmp#paymentMethods" href="NegotiationTypes_xsd.html#paymentMethods" coords="141,0,278,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#paymentMethods" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">paymentMethods</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_paymentMethods" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_business_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_business_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_business_paymentMethods" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Dinheiro</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Transferência</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>MBWay</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>PayPal</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Cheque</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Cartão de Crédito</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_paymentMethods" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"paymentMethods"</span><span class="tAN"> type=</span><span class="tAV">"paymentMethods"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business"></a><div class="componentTitle">Complex Type <span class="qname">business</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_business" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_business');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_business" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Padrão da negócios</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_business" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_business');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_business" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Complex_Type_business.jpeg" usemap="#NegotiationTypes_xsd_Complex_Type_business" /><map name="NegotiationTypes_xsd_Complex_Type_business" id="NegotiationTypes_xsd_Complex_Type_business"><area alt="NegotiationTypes_xsd.tmp#business_tipo" href="NegotiationTypes_xsd.html#business_tipo" coords="161,39,231,64" /><area alt="NegotiationTypes_xsd.tmp#business_businessCode" href="NegotiationTypes_xsd.html#business_businessCode" coords="218,81,318,106" /><area alt="NegotiationTypes_xsd.tmp#business_auction_price" href="NegotiationTypes_xsd.html#business_auction_price" coords="218,116,314,141" /><area alt="NegotiationTypes_xsd.tmp#business_direct_price" href="NegotiationTypes_xsd.html#business_direct_price" coords="218,151,306,176" /><area alt="NegotiationTypes_xsd.tmp#business_startDate" href="NegotiationTypes_xsd.html#business_startDate" coords="218,186,293,211" /><area alt="NegotiationTypes_xsd.tmp#business_finishDate" href="NegotiationTypes_xsd.html#business_finishDate" coords="218,221,297,246" /><area alt="NegotiationTypes_xsd.tmp#business_paymentMethods" href="NegotiationTypes_xsd.html#business_paymentMethods" coords="218,256,331,281" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_business" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_business');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_business" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="ProductTypes_xsd.html#productDetails_negotiation" target="mainFrame" title="http://www.buyteck.pt/ProductTypes" onclick="updatePageTitle('Schema documentation for ProductTypes.xsd')">productDetails/negotiation</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_business" type="image" src="img/btM.gif" value="-" onclick="switchState('model_business');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_business" style="display:block"><b><a href="NegotiationTypes_xsd.html#business_businessCode" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">businessCode</a></b> , <b><a href="NegotiationTypes_xsd.html#business_auction_price" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">auction_price{0,1}</a></b> , <b><a href="NegotiationTypes_xsd.html#business_direct_price" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">direct_price{0,1}</a></b> , <b><a href="NegotiationTypes_xsd.html#business_startDate" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">startDate</a></b> , <b><a href="NegotiationTypes_xsd.html#business_finishDate" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">finishDate</a></b> , <b><a href="NegotiationTypes_xsd.html#business_paymentMethods" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">paymentMethods</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#business_auction_price" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">auction_price</a></b>, <b><a href="NegotiationTypes_xsd.html#business_businessCode" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">businessCode</a></b>, <b><a href="NegotiationTypes_xsd.html#business_direct_price" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">direct_price</a></b>, <b><a href="NegotiationTypes_xsd.html#business_finishDate" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">finishDate</a></b>, <b><a href="NegotiationTypes_xsd.html#business_paymentMethods" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">paymentMethods</a></b>, <b><a href="NegotiationTypes_xsd.html#business_startDate" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">startDate</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Attributes</b></div>
+                           <div class="floatRight"><input id="button_attributes_business" type="image" src="img/btM.gif" value="-" onclick="switchState('attributes_business');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="attributes_business" style="display:block">
+                              <table class="attributesTable">
+                                 <thead>
+                                    <tr>
+                                       <th>QName</th>
+                                       <th width="10%">Type</th>
+                                       <th width="5%">Use</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tr>
+                                    <td class="firstColumn"><b><a href="NegotiationTypes_xsd.html#business_tipo" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">tipo</a></b></td>
+                                    <td><b><a href="NegotiationTypes_xsd.html#businessType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">businessType</a></b></td>
+                                    <td>optional</td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"business"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Padrão da negócios</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"businessCode"</span><span class="tAN"> type=</span><span class="tAV">"xs:unsignedInt"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"auction_price"</span><span class="tAN"> type=</span><span class="tAV">"auction_priceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"direct_price"</span><span class="tAN"> type=</span><span class="tAV">"direct_priceType"</span><span class="tAN"> minOccurs=</span><span class="tAV">"0"</span><span class="tAN"> maxOccurs=</span><span class="tAV">"1"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"startDate"</span><span class="tAN"> type=</span><span class="tAV">"c:date"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"finishDate"</span><span class="tAN"> type=</span><span class="tAV">"c:date"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"paymentMethods"</span><span class="tAN"> type=</span><span class="tAV">"paymentMethods"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"tipo"</span><span class="tAN"> type=</span><span class="tAV">"businessType"</span><span class="tEl">/&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="auction_priceType"></a><div class="componentTitle">Complex Type <span class="qname">auction_priceType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_auction_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_auction_priceType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_auction_priceType" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Complex_Type_auction_priceType.jpeg" usemap="#NegotiationTypes_xsd_Complex_Type_auction_priceType" /><map name="NegotiationTypes_xsd_Complex_Type_auction_priceType" id="NegotiationTypes_xsd_Complex_Type_auction_priceType"><area alt="NegotiationTypes_xsd.tmp#auction_priceType_basePrice" href="NegotiationTypes_xsd.html#auction_priceType_basePrice" coords="243,0,322,25" /><area alt="NegotiationTypes_xsd.tmp#auction_priceType_biddingBase" href="NegotiationTypes_xsd.html#auction_priceType_biddingBase" coords="243,35,333,60" /><area alt="NegotiationTypes_xsd.tmp#auction_priceType_productPrice" href="NegotiationTypes_xsd.html#auction_priceType_productPrice" coords="243,70,335,95" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_auction_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_auction_priceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_auction_priceType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="NegotiationTypes_xsd.html#business_auction_price" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business/auction_price</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_auction_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_auction_priceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_auction_priceType" style="display:block"><b><a href="NegotiationTypes_xsd.html#auction_priceType_basePrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">basePrice</a></b> , <b><a href="NegotiationTypes_xsd.html#auction_priceType_biddingBase" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">biddingBase</a></b> , <b><a href="NegotiationTypes_xsd.html#auction_priceType_productPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">productPrice</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#auction_priceType_basePrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">basePrice</a></b>, <b><a href="NegotiationTypes_xsd.html#auction_priceType_biddingBase" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">biddingBase</a></b>, <b><a href="NegotiationTypes_xsd.html#auction_priceType_productPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">productPrice</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_auction_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_auction_priceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_auction_priceType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"auction_priceType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"basePrice"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"biddingBase"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"productPrice"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="direct_priceType"></a><div class="componentTitle">Complex Type <span class="qname">direct_priceType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_direct_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_direct_priceType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_direct_priceType" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Complex_Type_direct_priceType.jpeg" usemap="#NegotiationTypes_xsd_Complex_Type_direct_priceType" /><map name="NegotiationTypes_xsd_Complex_Type_direct_priceType" id="NegotiationTypes_xsd_Complex_Type_direct_priceType"><area alt="NegotiationTypes_xsd.tmp#direct_priceType_fixedPrice" href="NegotiationTypes_xsd.html#direct_priceType_fixedPrice" coords="235,0,314,25" /><area alt="NegotiationTypes_xsd.tmp#direct_priceType_quantity" href="NegotiationTypes_xsd.html#direct_priceType_quantity" coords="235,35,304,60" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_direct_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_direct_priceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_direct_priceType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="NegotiationTypes_xsd.html#business_direct_price" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business/direct_price</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_direct_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_direct_priceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_direct_priceType" style="display:block"><b><a href="NegotiationTypes_xsd.html#direct_priceType_fixedPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">fixedPrice</a></b> , <b><a href="NegotiationTypes_xsd.html#direct_priceType_quantity" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">quantity</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#direct_priceType_fixedPrice" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">fixedPrice</a></b>, <b><a href="NegotiationTypes_xsd.html#direct_priceType_quantity" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">quantity</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_direct_priceType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_direct_priceType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_direct_priceType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"direct_priceType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"fixedPrice"</span><span class="tAN"> type=</span><span class="tAV">"xs:float"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"quantity"</span><span class="tAN"> type=</span><span class="tAV">"xs:unsignedInt"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="paymentMethods"></a><div class="componentTitle">Simple Type <span class="qname">paymentMethods</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_paymentMethods" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Padrão para os métodos de pagamento</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_paymentMethods" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Simple_Type_paymentMethods.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_paymentMethods" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Dinheiro</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Transferência</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>MBWay</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>PayPal</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Cheque</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>Cartão de Crédito</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_paymentMethods" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="NegotiationTypes_xsd.html#business_paymentMethods" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business/paymentMethods</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_paymentMethods" type="image" src="img/btM.gif" value="-" onclick="switchState('source_paymentMethods');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_paymentMethods" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"paymentMethods"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Padrão para os métodos de pagamento</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"Dinheiro"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"Transferência"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"MBWay"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"PayPal"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"Cheque"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"Cartão de Crédito"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="businessType"></a><div class="componentTitle">Simple Type <span class="qname">businessType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/NegotiationTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_businessType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_businessType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_businessType" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Restrição dos tipos de negócios (Venda direta ou leilão)</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_businessType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_businessType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_businessType" style="display:block"><img alt="Diagram" border="0" src="img/NegotiationTypes_xsd_Simple_Type_businessType.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td>restriction of <b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_businessType" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_businessType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_businessType" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>auction</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>directSell</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_businessType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_businessType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_businessType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Attribute </td>
+                                    <td><b><a href="NegotiationTypes_xsd.html#business_tipo" target="mainFrame" title="No namespace" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business/@tipo</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_businessType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_businessType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_businessType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:simpleType</span><span class="tAN"> name=</span><span class="tAV">"businessType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Restrição dos tipos de negócios (Venda direta ou leilão)</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:restriction</span><span class="tAN"> base=</span><span class="tAV">"xs:string"</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"auction"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:enumeration</span><span class="tAN"> value=</span><span class="tAV">"directSell"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:restriction&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:simpleType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="business_tipo"></a><div class="componentTitle">Attribute <span class="qname"><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b> / @tipo</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>No namespace</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="NegotiationTypes_xsd.html#businessType" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">businessType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_business_tipo" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_business_tipo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_business_tipo" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_business_tipo" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_business_tipo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_business_tipo" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>auction</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn">enumeration</td>
+                                    <td width="30%"><b>directSell</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_business_tipo" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_business_tipo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_business_tipo" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Complex Type </td>
+                                    <td><b><a href="NegotiationTypes_xsd.html#business" target="mainFrame" title="http://www.buyteck.pt/NegotiationTypes" onclick="updatePageTitle('Schema documentation for NegotiationTypes.xsd')">business</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_business_tipo" type="image" src="img/btM.gif" value="-" onclick="switchState('source_business_tipo');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_business_tipo" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:attribute</span><span class="tAN"> name=</span><span class="tAV">"tipo"</span><span class="tAN"> type=</span><span class="tAV">"businessType"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.</div>
+      </div><script type="text/javascript"><!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>

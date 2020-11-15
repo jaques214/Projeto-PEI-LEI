@@ -1,0 +1,1945 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>Schema documentation for SellerTypes.xsd</title>
+      <link rel="stylesheet" href="docHtml.css" type="text/css" /><script type="text/javascript"><!--
+        var propertiesBoxes= new Array('properties_SellerTypes.xsd', 
+				'properties_sellerType_seller', 
+				'properties_sellerDetails_sellerCode', 
+				'properties_sellerDetails_name', 
+				'properties_sellerDetails_nif', 
+				'properties_sellerDetails_gender', 
+				'properties_sellerDetails_social_media', 
+				'properties_social_media_list_facebook', 
+				'properties_social_media_list_instagram', 
+				'properties_sellerDetails_address', 
+				'properties_sellerDetails_telephone', 
+				'properties_sellerDetails_email', 
+				'properties_sellerDetails_rating', 
+				'properties_sellerDetails_product_list');
+var facetsBoxes= new Array('facets_sellerDetails_nif', 
+				'facets_sellerDetails_gender', 
+				'facets_sellerDetails_telephone', 
+				'facets_sellerDetails_email', 
+				'facets_sellerDetails_rating');
+var usedByBoxes= new Array('usedBy_sellerType', 
+				'usedBy_sellerDetails', 
+				'usedBy_social_media_list');
+var sourceBoxes= new Array('source_sellerType_seller', 
+				'source_sellerDetails_sellerCode', 
+				'source_sellerDetails_name', 
+				'source_sellerDetails_nif', 
+				'source_sellerDetails_gender', 
+				'source_sellerDetails_social_media', 
+				'source_social_media_list_facebook', 
+				'source_social_media_list_instagram', 
+				'source_sellerDetails_address', 
+				'source_sellerDetails_telephone', 
+				'source_sellerDetails_email', 
+				'source_sellerDetails_rating', 
+				'source_sellerDetails_product_list', 
+				'source_sellerType', 
+				'source_sellerDetails', 
+				'source_social_media_list');
+var instanceBoxes= new Array('instance_sellerType_seller', 
+				'instance_sellerDetails_social_media', 
+				'instance_sellerDetails_address', 
+				'instance_sellerDetails_product_list');
+var diagramBoxes= new Array('diagram_sellerType_seller', 
+				'diagram_sellerDetails_sellerCode', 
+				'diagram_sellerDetails_name', 
+				'diagram_sellerDetails_nif', 
+				'diagram_sellerDetails_gender', 
+				'diagram_sellerDetails_social_media', 
+				'diagram_social_media_list_facebook', 
+				'diagram_social_media_list_instagram', 
+				'diagram_sellerDetails_address', 
+				'diagram_sellerDetails_telephone', 
+				'diagram_sellerDetails_email', 
+				'diagram_sellerDetails_rating', 
+				'diagram_sellerDetails_product_list', 
+				'diagram_sellerType', 
+				'diagram_sellerDetails', 
+				'diagram_social_media_list');
+var annotationBoxes= new Array('annotations_SellerTypes.xsd', 
+				'annotations_sellerType', 
+				'annotations_sellerDetails', 
+				'annotations_social_media_list');
+var modelBoxes= new Array('model_sellerType_seller', 
+				'model_sellerDetails_social_media', 
+				'model_sellerDetails_address', 
+				'model_sellerDetails_product_list', 
+				'model_sellerType', 
+				'model_sellerDetails', 
+				'model_social_media_list');
+
+      
+        var button_prefix = 'button_';
+        
+        /**
+        * Returns an element in the current HTML document.
+        *
+        * @param elementID Identifier of HTML element
+        * @return               HTML element object
+        */
+        function getElementObject(elementID) {
+            var elemObj = null;
+            if (document.getElementById) {
+                elemObj = document.getElementById(elementID);
+            }
+            return elemObj;
+        }
+        
+        /**
+        * Switches the state of a collapseable box, e.g.
+        * if it's opened, it'll be closed, and vice versa.
+        *
+        * @param boxID Identifier of box
+        */
+        function switchState(boxID) {
+            var boxObj = getElementObject(boxID);
+            var buttonObj = getElementObject(button_prefix + boxID);
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else if (boxObj.style.display == "none") {
+                // Box is closed, so open it
+                openBox(boxObj, buttonObj);
+            } else if (boxObj.style.display == "block") {
+                // Box is opened, so close it
+                closeBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+        * Opens a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function openBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "block";
+                
+                // Change text of button
+                if (boxObj.style.display == "block") {
+                    buttonObj.src = "img/btM.gif";
+                }
+            }
+        }
+        
+        /**
+        * Closes a collapseable box.
+        *
+        * @param boxObj       Collapseable box
+        * @param buttonObj Button controlling box
+        */
+        function closeBox(boxObj, buttonObj) {
+            if (boxObj == null || buttonObj == null) {
+                // Box or button not found
+            } else {
+                // Change 'display' CSS property of box
+                boxObj.style.display = "none";
+                
+                // Change text of button
+                if (boxObj.style.display == "none") {
+                    buttonObj.src = "img/btP.gif";
+                }
+            }
+        }
+    
+       function switchStateForAll(buttonObj, boxList) {
+            if (buttonObj == null) {
+                // button not found
+            } else if (buttonObj.value == "+") {
+                // Expand all
+                expandAll(boxList);
+                buttonObj.value = "-";
+            } else if (buttonObj.value == "-") {
+                // Collapse all
+                collapseAll(boxList);
+                buttonObj.value = "+";
+            }
+        }
+        
+        /**
+        * Closes all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function collapseAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                closeBox(boxObj, buttonObj);
+            }
+        }
+            
+        /**
+        * Open all boxes in a given list.
+        *
+        * @param boxList Array of box IDs
+        */
+        function expandAll(boxList) {
+            var idx;
+            for (idx = 0; idx < boxList.length; idx++) {
+                var boxObj = getElementObject(boxList[idx]);
+                var buttonObj = getElementObject(button_prefix + boxList[idx]);
+                openBox(boxObj, buttonObj);
+            }
+        }
+        
+        /**
+         * Update the message presented in the title of the html page.
+         * - If the documentation was splited by namespace we present something like: "Documentation for namespace 'ns'"
+         * - If the documentation was splited by location we present somehing like: "Documentation for 'Schema.xsd'"
+         * - If no split we always present: "Documentation for 'MainSchema.xsd'"
+         */
+        function updatePageTitle(message) {
+            top.document.title = message;
+        }
+        
+          
+                    
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function findAndFloat(id, x_displacement, y_displacement){
+
+            var element = getElementObject(id);            
+            
+            window[id + "_obj"] = element;
+            
+            if(document.layers) {
+               element.style = element;
+            }
+            
+            element.current_y = y_displacement;      
+            element.first_time = true;
+         
+            element.floatElement = function(){
+               // It may be closed by an user action.
+                
+               // Target X and Y coordinates.
+               var x, y;
+               
+               var myWidth = 0, myHeight = 0;
+               if( typeof( window.innerWidth ) == 'number' ) {
+                  //Non-IE
+                  myWidth = window.innerWidth;
+                  myHeight = window.innerHeight;
+               } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+                  //IE 6+ in 'standards compliant mode'
+                  myWidth = document.documentElement.clientWidth;
+                  myHeight = document.documentElement.clientHeight;
+               } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                  //IE 4 compatible
+                  myWidth = document.body.clientWidth;
+                  myHeight = document.body.clientHeight;
+               }
+               
+               
+               x = myWidth - x_displacement;
+               
+               var ns = (navigator.appName.indexOf("Netscape") != -1);               
+               y = ns ? pageYOffset : document.documentElement && document.documentElement.scrollTop ? 
+                  document.documentElement.scrollTop : document.body.scrollTop;               
+               y = y + y_displacement;               
+               
+               // The current y is the current coordinate of the floating element.
+               // This should be at the limit the y target coordinate.
+               this.current_y += (y - this.current_y)/1.25;
+               
+               // Add the pixels constant after the values
+               // and move the element.
+               var px = document.layers ? "" : "px";
+               this.style.left =  x + px;
+               this.style.top =  this.current_y + px;
+                              
+               setTimeout(this.id + "_obj.floatElement()", 100);
+            }
+            
+            element.floatElement();
+            return element;
+          }
+
+         /**
+          * Finds an HTML element by its ID and makes it floatable over the normal content.
+          *
+          * @param x_displacement The difference in pixels to the right side of the window from 
+          *           the left side of the element.
+          * @param y_displacement The difference in pixels to the right side of the window from 
+          *           the top of the element.          
+          */
+         function selectTOCGroupBy(id, isChunked, indexFileLocation, indexFileNamespace, indexFileComponent){
+
+            if (!isChunked) {
+             var selectIds = new Array('toc_group_by_namespace', 'toc_group_by_location', 'toc_group_by_component_type');
+             // Make all the tabs invisible.
+               for (i = 0; i < 3; i++){
+                  var tab = getElementObject(selectIds[i]);
+                  tab.style.display = 'none';
+               }
+               var selTab = getElementObject(id);
+               selTab.style.display = 'block';
+            } else {
+             if (id == 'toc_group_by_namespace') {
+               parent.indexFrame.location = indexFileNamespace;
+             } else  if (id == 'toc_group_by_location') {
+               parent.indexFrame.location = indexFileLocation;
+             } else  if (id == 'toc_group_by_component_type') {
+              parent.indexFrame.location = indexFileComponent;
+             }
+            }
+         }
+          
+
+    
+                    //--></script></head>
+   <body>
+      <div id="global_controls" class="globalControls" style="position:absolute;right:0;">
+         <table class="rt">
+            <tr>
+               <td class="rt_cornerTopLeft"></td>
+               <td class="rt_lineTop"></td>
+               <td class="rt_cornerTopRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_lineLeft"></td>
+               <td class="rt_content">
+                  <h3>Showing:</h3>
+                  <table>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, annotationBoxes);" class="control" /></span><span class="globalControlName">Annotations</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, diagramBoxes);" class="control" /></span><span class="globalControlName">Diagrams</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, facetsBoxes);" class="control" /></span><span class="globalControlName">Facets </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, instanceBoxes);" class="control" /></span><span class="globalControlName">Instances</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, modelBoxes);" class="control" /></span><span class="globalControlName">Model </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, propertiesBoxes);" class="control" /></span><span class="globalControlName">Properties </span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, sourceBoxes);" class="control" /></span><span class="globalControlName">Source</span></td>
+                     </tr>
+                     <tr>
+                        <td><span><input type="checkbox" value="-" checked="checked" onclick="switchStateForAll(this, usedByBoxes);" class="control" /></span><span class="globalControlName">Used by </span></td>
+                     </tr>
+                  </table>
+                  <div align="right"><span><input type="button" onclick="getElementObject('global_controls').style.display = 'none';" value="Close" /></span></div>
+               </td>
+               <td class="rt_lineRight"></td>
+            </tr>
+            <tr>
+               <td class="rt_cornerBottomLeft"></td>
+               <td class="rt_lineBottom"></td>
+               <td class="rt_cornerBottomRight"></td>
+            </tr>
+         </table>
+      </div><a id="SellerTypes.xsd"></a><div class="componentTitle">Imported schema <span class="qname">SellerTypes.xsd</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_SellerTypes.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_SellerTypes.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_SellerTypes.xsd" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Vocabulário xsd para a informação relativa ao vendedor</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_SellerTypes.xsd" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_SellerTypes.xsd');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_SellerTypes.xsd" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">attribute form default</td>
+                                    <td><b>unqualified</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">element form default</td>
+                                    <td><b>qualified</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerType_seller"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerType" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerType</a></b> / seller</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerType_seller" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerType_seller');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerType_seller" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_seller.jpeg" usemap="#SellerTypes_xsd_Element_seller" /><map name="SellerTypes_xsd_Element_seller" id="SellerTypes_xsd_Element_seller"><area alt="SellerTypes_xsd.tmp#sellerDetails_sellerCode" href="SellerTypes_xsd.html#sellerDetails_sellerCode" coords="170,40,252,65" /><area alt="SellerTypes_xsd.tmp#sellerDetails_name" href="SellerTypes_xsd.html#sellerDetails_name" coords="170,75,227,100" /><area alt="SellerTypes_xsd.tmp#sellerDetails_nif" href="SellerTypes_xsd.html#sellerDetails_nif" coords="170,110,221,135" /><area alt="SellerTypes_xsd.tmp#sellerDetails_gender" href="SellerTypes_xsd.html#sellerDetails_gender" coords="170,145,235,170" /><area alt="SellerTypes_xsd.tmp#sellerDetails_social_media" href="SellerTypes_xsd.html#sellerDetails_social_media" coords="170,180,263,205" /><area alt="SellerTypes_xsd.tmp#sellerDetails_address" href="SellerTypes_xsd.html#sellerDetails_address" coords="170,215,241,240" /><area alt="SellerTypes_xsd.tmp#sellerDetails_telephone" href="SellerTypes_xsd.html#sellerDetails_telephone" coords="170,250,248,275" /><area alt="SellerTypes_xsd.tmp#sellerDetails_email" href="SellerTypes_xsd.html#sellerDetails_email" coords="170,285,225,310" /><area alt="SellerTypes_xsd.tmp#sellerDetails_rating" href="SellerTypes_xsd.html#sellerDetails_rating" coords="170,320,228,345" /><area alt="SellerTypes_xsd.tmp#sellerDetails_product_list" href="SellerTypes_xsd.html#sellerDetails_product_list" coords="170,355,257,380" /><area alt="SellerTypes_xsd.tmp#sellerDetails" href="SellerTypes_xsd.html#sellerDetails" coords="88,3,197,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerType_seller" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerType_seller');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerType_seller" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_sellerType_seller" type="image" src="img/btM.gif" value="-" onclick="switchState('model_sellerType_seller');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_sellerType_seller" style="display:block"><b><a href="SellerTypes_xsd.html#sellerDetails_sellerCode" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerCode</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_name" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">name</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_nif" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">nif</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_gender" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">gender</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_social_media" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_address" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">address</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_telephone" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">telephone</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_email" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">email</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_rating" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">rating</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_product_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">product_list</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#sellerDetails_address" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">address</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_email" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">email</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_gender" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">gender</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_name" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">name</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_nif" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">nif</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_product_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">product_list</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_rating" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">rating</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_sellerCode" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerCode</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_social_media" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_telephone" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">telephone</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_sellerType_seller" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_sellerType_seller');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_sellerType_seller" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;seller</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.buyteck.pt/SellerTypes"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;sellerCode</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/sellerCode&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;name</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/name&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;nif</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/nif&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;gender</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/gender&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;social_media</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/social_media&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;address</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/address&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;telephone</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/telephone&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;email</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/email&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;rating</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/rating&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;product_list</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/product_list&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/seller&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerType_seller" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerType_seller');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerType_seller" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"seller"</span><span class="tAN"> type=</span><span class="tAV">"sellerDetails"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_sellerCode"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / sellerCode</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_sellerCode" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_sellerCode');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_sellerCode" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_sellerCode.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:integer</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_sellerCode" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_sellerCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_sellerCode" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_sellerCode" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_sellerCode');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_sellerCode" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"sellerCode"</span><span class="tAN"> type=</span><span class="tAV">"xs:integer"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_name"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / name</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_name" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_name');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_name" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_name.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_name" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_name');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_name" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_name" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_name');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_name" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_nif"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / nif</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_nif" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_nif');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_nif" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_nif.jpeg" usemap="#SellerTypes_xsd_Element_nif" /><map name="SellerTypes_xsd_Element_nif" id="SellerTypes_xsd_Element_nif"><area alt="CommonTypes_xsd.tmp#nineNumbers" href="CommonTypes_xsd.html#nineNumbers" coords="79,0,206,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#nineNumbers" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">nineNumbers</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_nif" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_nif');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_nif" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_sellerDetails_nif" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_sellerDetails_nif');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_sellerDetails_nif" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>([0-9]){9}</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_nif" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_nif');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_nif" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"nif"</span><span class="tAN"> type=</span><span class="tAV">"c:nineNumbers"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_gender"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / gender</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_gender" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_gender');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_gender" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_gender.jpeg" usemap="#SellerTypes_xsd_Element_gender" /><map name="SellerTypes_xsd_Element_gender" id="SellerTypes_xsd_Element_gender"><area alt="CommonTypes_xsd.tmp#genderType" href="CommonTypes_xsd.html#genderType" coords="93,0,215,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#genderType" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">genderType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_gender" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_gender');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_gender" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_sellerDetails_gender" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_sellerDetails_gender');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_sellerDetails_gender" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>male|female</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_gender" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_gender');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_gender" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"gender"</span><span class="tAN"> type=</span><span class="tAV">"c:genderType"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_social_media"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / social_media</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_social_media" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_social_media');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_social_media" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_social_media.jpeg" usemap="#SellerTypes_xsd_Element_social_media" /><map name="SellerTypes_xsd_Element_social_media" id="SellerTypes_xsd_Element_social_media"><area alt="SellerTypes_xsd.tmp#social_media_list_facebook" href="SellerTypes_xsd.html#social_media_list_facebook" coords="206,40,282,65" /><area alt="SellerTypes_xsd.tmp#social_media_list_instagram" href="SellerTypes_xsd.html#social_media_list_instagram" coords="206,75,284,100" /><area alt="SellerTypes_xsd.tmp#social_media_list" href="SellerTypes_xsd.html#social_media_list" coords="124,3,256,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#social_media_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media_list</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_social_media" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_social_media');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_social_media" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_sellerDetails_social_media" type="image" src="img/btM.gif" value="-" onclick="switchState('model_sellerDetails_social_media');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_sellerDetails_social_media" style="display:block"><b><a href="SellerTypes_xsd.html#social_media_list_facebook" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">facebook</a></b> , <b><a href="SellerTypes_xsd.html#social_media_list_instagram" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">instagram</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#social_media_list_facebook" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">facebook</a></b>, <b><a href="SellerTypes_xsd.html#social_media_list_instagram" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">instagram</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_sellerDetails_social_media" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_sellerDetails_social_media');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_sellerDetails_social_media" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;social_media</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.buyteck.pt/SellerTypes"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;facebook</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/facebook&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;instagram</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/instagram&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/social_media&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_social_media" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_social_media');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_social_media" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"social_media"</span><span class="tAN"> type=</span><span class="tAV">"social_media_list"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="social_media_list_facebook"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#social_media_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media_list</a></b> / facebook</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_social_media_list_facebook" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_social_media_list_facebook');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_social_media_list_facebook" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_facebook.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_social_media_list_facebook" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_social_media_list_facebook');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_social_media_list_facebook" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_social_media_list_facebook" type="image" src="img/btM.gif" value="-" onclick="switchState('source_social_media_list_facebook');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_social_media_list_facebook" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"facebook"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="social_media_list_instagram"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#social_media_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media_list</a></b> / instagram</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_social_media_list_instagram" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_social_media_list_instagram');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_social_media_list_instagram" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_instagram.jpeg" /></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b>xs:string</b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_social_media_list_instagram" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_social_media_list_instagram');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_social_media_list_instagram" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_social_media_list_instagram" type="image" src="img/btM.gif" value="-" onclick="switchState('source_social_media_list_instagram');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_social_media_list_instagram" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"instagram"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_address"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / address</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_address" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_address');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_address" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_address.jpeg" usemap="#SellerTypes_xsd_Element_address" /><map name="SellerTypes_xsd_Element_address" id="SellerTypes_xsd_Element_address"><area alt="CommonTypes_xsd.tmp#address_address" href="CommonTypes_xsd.html#address_address" coords="184,40,255,65" /><area alt="CommonTypes_xsd.tmp#address_number" href="CommonTypes_xsd.html#address_number" coords="184,75,251,100" /><area alt="CommonTypes_xsd.tmp#address_postal-code" href="CommonTypes_xsd.html#address_postal-code" coords="184,110,272,135" /><area alt="CommonTypes_xsd.tmp#address_city" href="CommonTypes_xsd.html#address_city" coords="184,145,235,170" /><area alt="CommonTypes_xsd.tmp#address_country" href="CommonTypes_xsd.html#address_country" coords="184,180,252,205" /><area alt="CommonTypes_xsd.tmp#address" href="CommonTypes_xsd.html#address" coords="102,3,202,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#address" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">address</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_address" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_address');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_address" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_sellerDetails_address" type="image" src="img/btM.gif" value="-" onclick="switchState('model_sellerDetails_address');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_sellerDetails_address" style="display:block"><b><a href="CommonTypes_xsd.html#address_address" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">address</a></b> , <b><a href="CommonTypes_xsd.html#address_number" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">number</a></b> , <b><a href="CommonTypes_xsd.html#address_postal-code" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">postal-code</a></b> , <b><a href="CommonTypes_xsd.html#address_city" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">city</a></b> , <b><a href="CommonTypes_xsd.html#address_country" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">country</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#address_address" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">address</a></b>, <b><a href="CommonTypes_xsd.html#address_city" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">city</a></b>, <b><a href="CommonTypes_xsd.html#address_country" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">country</a></b>, <b><a href="CommonTypes_xsd.html#address_number" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">number</a></b>, <b><a href="CommonTypes_xsd.html#address_postal-code" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">postal-code</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_sellerDetails_address" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_sellerDetails_address');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_sellerDetails_address" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;address</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.buyteck.pt/SellerTypes"</span><span class="tT"> </span><span class="tAN">xmlns:c=</span><span class="tAV">"http://www.buyteck.pt/CommonTypes"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;c:address</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/c:address&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;c:number</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/c:number&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;c:postal-code</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/c:postal-code&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;c:city</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/c:city&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;c:country</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,1}</span><span class="tEl">&lt;/c:country&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/address&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_address" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_address');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_address" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"address"</span><span class="tAN"> type=</span><span class="tAV">"c:address"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_telephone"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / telephone</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_telephone" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_telephone');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_telephone" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_telephone.jpeg" usemap="#SellerTypes_xsd_Element_telephone" /><map name="SellerTypes_xsd_Element_telephone" id="SellerTypes_xsd_Element_telephone"><area alt="CommonTypes_xsd.tmp#nineNumbers" href="CommonTypes_xsd.html#nineNumbers" coords="106,0,233,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#nineNumbers" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">nineNumbers</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_telephone" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_telephone');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_telephone" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_sellerDetails_telephone" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_sellerDetails_telephone');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_sellerDetails_telephone" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>([0-9]){9}</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_telephone" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_telephone');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_telephone" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"telephone"</span><span class="tAN"> type=</span><span class="tAV">"c:nineNumbers"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_email"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / email</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_email" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_email');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_email" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_email.jpeg" usemap="#SellerTypes_xsd_Element_email" /><map name="SellerTypes_xsd_Element_email" id="SellerTypes_xsd_Element_email"><area alt="CommonTypes_xsd.tmp#email" href="CommonTypes_xsd.html#email" coords="83,0,171,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#email" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">email</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_email" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_email');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_email" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_sellerDetails_email" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_sellerDetails_email');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_sellerDetails_email" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[a-z]+@[a-z]+.+[a-z]+</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_email" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_email');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_email" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"email"</span><span class="tAN"> type=</span><span class="tAV">"c:email"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_rating"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / rating</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_rating" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_rating');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_rating" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_rating.jpeg" usemap="#SellerTypes_xsd_Element_rating" /><map name="SellerTypes_xsd_Element_rating" id="SellerTypes_xsd_Element_rating"><area alt="CommonTypes_xsd.tmp#ratingType" href="CommonTypes_xsd.html#ratingType" coords="86,0,201,26" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="CommonTypes_xsd.html#ratingType" target="mainFrame" title="http://www.buyteck.pt/CommonTypes" onclick="updatePageTitle('Schema documentation for CommonTypes.xsd')">ratingType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_rating" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_rating');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_rating" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>simple</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Facets</b></div>
+                           <div class="floatRight"><input id="button_facets_sellerDetails_rating" type="image" src="img/btM.gif" value="-" onclick="switchState('facets_sellerDetails_rating');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="facets_sellerDetails_rating" style="display:block">
+                              <table class="facetsTable">
+                                 <tr>
+                                    <td class="firstColumn">pattern</td>
+                                    <td width="30%"><b>[1-5]</b></td>
+                                    <td>
+                                       <div class="annotation"></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_rating" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_rating');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_rating" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"rating"</span><span class="tAN"> type=</span><span class="tAV">"c:ratingType"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails_product_list"></a><div class="componentTitle">Element <span class="qname"><b><a href="SellerTypes_xsd.html#sellerDetails" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails</a></b> / product_list</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails_product_list" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails_product_list');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails_product_list" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Element_product_list.jpeg" usemap="#SellerTypes_xsd_Element_product_list" /><map name="SellerTypes_xsd_Element_product_list" id="SellerTypes_xsd_Element_product_list"><area alt="ProductTypes_xsd.tmp#productType_product" href="ProductTypes_xsd.html#productType_product" coords="220,44,288,69" /><area alt="ProductTypes_xsd.tmp#productType" href="ProductTypes_xsd.html#productType" coords="118,3,239,25" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Type</b></td>
+                        <td><b><a href="ProductTypes_xsd.html#productType" target="mainFrame" title="http://www.buyteck.pt/ProductTypes" onclick="updatePageTitle('Schema documentation for ProductTypes.xsd')">productType</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Properties</b></div>
+                           <div class="floatRight"><input id="button_properties_sellerDetails_product_list" type="image" src="img/btM.gif" value="-" onclick="switchState('properties_sellerDetails_product_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="properties_sellerDetails_product_list" style="display:block">
+                              <table class="propertiesTable">
+                                 <tr>
+                                    <td class="firstColumn" style="white-space: nowrap;">content</td>
+                                    <td><b>complex</b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_sellerDetails_product_list" type="image" src="img/btM.gif" value="-" onclick="switchState('model_sellerDetails_product_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_sellerDetails_product_list" style="display:block"><b><a href="ProductTypes_xsd.html#productType_product" target="mainFrame" title="http://www.buyteck.pt/ProductTypes" onclick="updatePageTitle('Schema documentation for ProductTypes.xsd')">product+</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="ProductTypes_xsd.html#productType_product" target="mainFrame" title="http://www.buyteck.pt/ProductTypes" onclick="updatePageTitle('Schema documentation for ProductTypes.xsd')">product</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Instance</b></div>
+                           <div class="floatRight"><input id="button_instance_sellerDetails_product_list" type="image" src="img/btM.gif" value="-" onclick="switchState('instance_sellerDetails_product_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="instance_sellerDetails_product_list" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;product_list</span><span class="tT"> </span><span class="tAN">xmlns=</span><span class="tAV">"http://www.buyteck.pt/SellerTypes"</span><span class="tT"> </span><span class="tAN">xmlns:p=</span><span class="tAV">"http://www.buyteck.pt/ProductTypes"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;p:product</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">{1,unbounded}</span><span class="tEl">&lt;/p:product&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/product_list&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails_product_list" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails_product_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails_product_list" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"product_list"</span><span class="tAN"> type=</span><span class="tAV">"p:productType"</span><span class="tEl">/&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerType"></a><div class="componentTitle">Complex Type <span class="qname">sellerType</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_sellerType" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_sellerType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_sellerType" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Padrão do vendedor</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerType" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerType');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerType" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Complex_Type_sellerType.jpeg" usemap="#SellerTypes_xsd_Complex_Type_sellerType" /><map name="SellerTypes_xsd_Complex_Type_sellerType" id="SellerTypes_xsd_Complex_Type_sellerType"><area alt="SellerTypes_xsd.tmp#sellerType_seller" href="SellerTypes_xsd.html#sellerType_seller" coords="224,4,281,29" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_sellerType" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_sellerType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_sellerType" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="Main_xsd.html#company_seller_list" target="mainFrame" title="http://www.buyteck.pt/Main" onclick="updatePageTitle('Schema documentation for Main.xsd')">company/seller_list</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_sellerType" type="image" src="img/btM.gif" value="-" onclick="switchState('model_sellerType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_sellerType" style="display:block"><b><a href="SellerTypes_xsd.html#sellerType_seller" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">seller</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#sellerType_seller" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">seller</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerType" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerType');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerType" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"sellerType"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Padrão do vendedor</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"seller"</span><span class="tAN"> type=</span><span class="tAV">"sellerDetails"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="sellerDetails"></a><div class="componentTitle">Complex Type <span class="qname">sellerDetails</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_sellerDetails" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_sellerDetails');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_sellerDetails" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Detalhes de vendedores</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_sellerDetails" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_sellerDetails');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_sellerDetails" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Complex_Type_sellerDetails.jpeg" usemap="#SellerTypes_xsd_Complex_Type_sellerDetails" /><map name="SellerTypes_xsd_Complex_Type_sellerDetails" id="SellerTypes_xsd_Complex_Type_sellerDetails"><area alt="SellerTypes_xsd.tmp#sellerDetails_sellerCode" href="SellerTypes_xsd.html#sellerDetails_sellerCode" coords="232,0,314,25" /><area alt="SellerTypes_xsd.tmp#sellerDetails_name" href="SellerTypes_xsd.html#sellerDetails_name" coords="232,35,289,60" /><area alt="SellerTypes_xsd.tmp#sellerDetails_nif" href="SellerTypes_xsd.html#sellerDetails_nif" coords="232,70,283,95" /><area alt="SellerTypes_xsd.tmp#sellerDetails_gender" href="SellerTypes_xsd.html#sellerDetails_gender" coords="232,105,297,130" /><area alt="SellerTypes_xsd.tmp#sellerDetails_social_media" href="SellerTypes_xsd.html#sellerDetails_social_media" coords="232,140,325,165" /><area alt="SellerTypes_xsd.tmp#sellerDetails_address" href="SellerTypes_xsd.html#sellerDetails_address" coords="232,175,303,200" /><area alt="SellerTypes_xsd.tmp#sellerDetails_telephone" href="SellerTypes_xsd.html#sellerDetails_telephone" coords="232,210,310,235" /><area alt="SellerTypes_xsd.tmp#sellerDetails_email" href="SellerTypes_xsd.html#sellerDetails_email" coords="232,245,287,270" /><area alt="SellerTypes_xsd.tmp#sellerDetails_rating" href="SellerTypes_xsd.html#sellerDetails_rating" coords="232,280,290,305" /><area alt="SellerTypes_xsd.tmp#sellerDetails_product_list" href="SellerTypes_xsd.html#sellerDetails_product_list" coords="232,315,319,340" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_sellerDetails" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_sellerDetails');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_sellerDetails" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="SellerTypes_xsd.html#sellerType_seller" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerType/seller</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_sellerDetails" type="image" src="img/btM.gif" value="-" onclick="switchState('model_sellerDetails');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_sellerDetails" style="display:block"><b><a href="SellerTypes_xsd.html#sellerDetails_sellerCode" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerCode</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_name" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">name</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_nif" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">nif</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_gender" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">gender</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_social_media" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_address" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">address</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_telephone" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">telephone</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_email" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">email</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_rating" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">rating</a></b> , <b><a href="SellerTypes_xsd.html#sellerDetails_product_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">product_list</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#sellerDetails_address" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">address</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_email" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">email</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_gender" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">gender</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_name" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">name</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_nif" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">nif</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_product_list" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">product_list</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_rating" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">rating</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_sellerCode" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerCode</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_social_media" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">social_media</a></b>, <b><a href="SellerTypes_xsd.html#sellerDetails_telephone" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">telephone</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_sellerDetails" type="image" src="img/btM.gif" value="-" onclick="switchState('source_sellerDetails');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_sellerDetails" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"sellerDetails"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Detalhes de vendedores</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"sellerCode"</span><span class="tAN"> type=</span><span class="tAV">"xs:integer"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"name"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"nif"</span><span class="tAN"> type=</span><span class="tAV">"c:nineNumbers"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"gender"</span><span class="tAN"> type=</span><span class="tAV">"c:genderType"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"social_media"</span><span class="tAN"> type=</span><span class="tAV">"social_media_list"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"address"</span><span class="tAN"> type=</span><span class="tAV">"c:address"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"telephone"</span><span class="tAN"> type=</span><span class="tAV">"c:nineNumbers"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"email"</span><span class="tAN"> type=</span><span class="tAV">"c:email"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"rating"</span><span class="tAN"> type=</span><span class="tAV">"c:ratingType"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"product_list"</span><span class="tAN"> type=</span><span class="tAV">"p:productType"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table><a id="social_media_list"></a><div class="componentTitle">Complex Type <span class="qname">social_media_list</span></div>
+      <table class="rt">
+         <tr>
+            <td class="rt_cornerTopLeft"></td>
+            <td class="rt_lineTop"></td>
+            <td class="rt_cornerTopRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_lineLeft"></td>
+            <td class="rt_content">
+               <table class="component">
+                  <tbody>
+                     <tr>
+                        <td class="firstColumn"><b>Namespace</b></td>
+                        <td>http://www.buyteck.pt/SellerTypes</td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Annotations</b></div>
+                           <div class="floatRight"><input id="button_annotations_social_media_list" type="image" src="img/btM.gif" value="-" onclick="switchState('annotations_social_media_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="annotations_social_media_list" style="display:block">
+                              <div class="annotation">
+                                 <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                    <tr>
+                                       <td width="100%">
+                                          <pre><span class="tT">Padrão das redes sociais</span></pre>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Diagram</b></div>
+                           <div class="floatRight"><input id="button_diagram_social_media_list" type="image" src="img/btM.gif" value="-" onclick="switchState('diagram_social_media_list');" class="control" /></div>
+                        </td>
+                        <td class="diagram">
+                           <div id="diagram_social_media_list" style="display:block"><img alt="Diagram" border="0" src="img/SellerTypes_xsd_Complex_Type_social_media_list.jpeg" usemap="#SellerTypes_xsd_Complex_Type_social_media_list" /><map name="SellerTypes_xsd_Complex_Type_social_media_list" id="SellerTypes_xsd_Complex_Type_social_media_list"><area alt="SellerTypes_xsd.tmp#social_media_list_facebook" href="SellerTypes_xsd.html#social_media_list_facebook" coords="255,0,331,25" /><area alt="SellerTypes_xsd.tmp#social_media_list_instagram" href="SellerTypes_xsd.html#social_media_list_instagram" coords="255,35,333,60" /></map></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Used by</b></div>
+                           <div class="floatRight"><input id="button_usedBy_social_media_list" type="image" src="img/btM.gif" value="-" onclick="switchState('usedBy_social_media_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="usedBy_social_media_list" style="display:block">
+                              <table class="usedByTable">
+                                 <tr>
+                                    <td class="firstColumn">Element </td>
+                                    <td><b><a href="SellerTypes_xsd.html#sellerDetails_social_media" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">sellerDetails/social_media</a></b></td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Model</b><div class="floatRight"><input id="button_model_social_media_list" type="image" src="img/btM.gif" value="-" onclick="switchState('model_social_media_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="model_social_media_list" style="display:block"><b><a href="SellerTypes_xsd.html#social_media_list_facebook" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">facebook</a></b> , <b><a href="SellerTypes_xsd.html#social_media_list_instagram" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">instagram</a></b></div>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn"><b>Children</b></td>
+                        <td><b><a href="SellerTypes_xsd.html#social_media_list_facebook" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">facebook</a></b>, <b><a href="SellerTypes_xsd.html#social_media_list_instagram" target="mainFrame" title="http://www.buyteck.pt/SellerTypes" onclick="updatePageTitle('Schema documentation for SellerTypes.xsd')">instagram</a></b></td>
+                     </tr>
+                     <tr>
+                        <td class="firstColumn">
+                           <div class="floatLeft"><b>Source</b></div>
+                           <div class="floatRight"><input id="button_source_social_media_list" type="image" src="img/btM.gif" value="-" onclick="switchState('source_social_media_list');" class="control" /></div>
+                        </td>
+                        <td>
+                           <div id="source_social_media_list" style="display:block">
+                              <table style="table-layout:fixed;white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word;_white-space:pre;" class="preWrapContainer">
+                                 <tr>
+                                    <td width="100%">
+                                       <pre><span class="tEl">&lt;xs:complexType</span><span class="tAN"> name=</span><span class="tAV">"social_media_list"</span><span class="tEl">&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:annotation</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:documentation</span><span class="tEl">&gt;</span><span class="tT" style="white-space:normal">Padrão das redes sociais</span><span class="tEl">&lt;/xs:documentation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:annotation&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;xs:sequence</span><span class="tEl">&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"facebook"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+    </span><span class="tEl">&lt;xs:element</span><span class="tAN"> name=</span><span class="tAV">"instagram"</span><span class="tAN"> type=</span><span class="tAV">"xs:string"</span><span class="tEl">/&gt;</span><span class="tI">
+  </span><span class="tEl">&lt;/xs:sequence&gt;</span><span class="tI">
+</span><span class="tEl">&lt;/xs:complexType&gt;</span></pre>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </td>
+            <td class="rt_lineRight"></td>
+         </tr>
+         <tr>
+            <td class="rt_cornerBottomLeft"></td>
+            <td class="rt_lineBottom"></td>
+            <td class="rt_cornerBottomRight"></td>
+         </tr>
+      </table>
+      <div class="footer">
+         <hr />
+         <div align="center">XML Schema documentation generated by <a href="http://www.oxygenxml.com" target="_parent"><span class="oXygenLogo"><span class="redX">&lt;</span>o<span class="redX">X</span>ygen<span class="redX">/&gt;</span></span></a><sup>®</sup> XML Editor.</div>
+      </div><script type="text/javascript"><!--
+                     // The namespace is the selected option in the TOC combo.
+                    
+                     // Floats the toolbar.
+                     var globalControls = getElementObject("global_controls"); 
+                     
+                     if(globalControls != null){
+	                     var browser=navigator.appName;
+						 var version = parseFloat(navigator.appVersion.split('MSIE')[1]);
+						 
+						 var IE6 = false;
+						 if ((browser=="Microsoft Internet Explorer") && (version < 7)){
+						 	IE6 = true;
+						 }
+	
+	                     //alert (IE6 + " |V| " + version);
+	                     
+	                     if(IE6){
+	                     	// On IE 6 the 'fixed' property is not supported. We must use javascript. 
+	                         globalControls.style.position='absolute';                         
+	                         // The global controls will do not exist in the TOC frame, when chunking.
+	                         findAndFloat("global_controls", 225, 30);    
+	                     } else {
+	                      	  globalControls.style.position='fixed';                     	
+	                     }
+	                     
+	                     globalControls.style.right='0';                       
+                     }
+                //--></script></body>
+</html>
